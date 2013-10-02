@@ -1,42 +1,49 @@
 # Tower of Hanoi
 
-peg_1 = [1,2,3,4] # discs start on this peg - left-->right = top-->bottom
-peg_2 = []
-peg_3 = [] # the goal peg
+peg1 = [4,3,2,1] # discs start on this peg - left-->right = bottom-->top
+peg2 = []
+peg3 = [] # the goal peg
 
-currently_holding = []
+# Move the disks from one peg to another following the rules of Hanoi.
+#
+# number_of_disks - the total number of disks
+# from - the starting peg
+# to - the ending (goal) peg
+# via - the remaining peg (b in this case)
 
-# the general flow:
-# are all discs on right peg? Good, you won. If not:
-## find the smallest top-most disc and move it to a peg that has a larger disc top-most. 
-#### if no options, move smallest top disc to middle peg
-###### if middle peg is occupied, move smallest possible disc to right peg. 
+puts "starting situation:"
+puts "peg1 = #{peg1}"
+puts "peg2 = #{peg2}"
+puts "peg3 = #{peg3}"
 
-def inspect_tops(peg_1, peg_2, peg_3)
-  all_pegs = [peg_1,peg_2,peg_3]
-
-  current_tops = all_pegs.collect do |peg|
-    peg[0]
+def move_disk(number_of_disks, from, to, via)
+  # when you have one disk left you're done.
+  # so stop recursing.
+  if number_of_disks == 1
+    to.push(from.pop)
+  else
+    # "move n-1 discs from A to B"
+    via.push(from.pop)
+    # actually fo the 'n-1' mentioned in other steps
+    # and repeat the process
+    move_disk(number_of_disks - 1, from, to, via)
+    # "move n-1 from B to C"
+    to.push(via.pop)
   end
-  current_tops
-
+  to
 end
 
-def lift_lowest_disc(peg_1, peg_2, peg_3, currently_holding)
-  inspect_tops(peg_1, peg_2, peg_3).each_with_index do |disc, peg| 
-    if disc != nil && peg == 0
-      currently_holding << inspect_tops(peg_1, peg_2, peg_3)[0]
-      peg_1.delete_at(0)
-    elsif disc != nil && peg == 1
-      currently_holding << inspect_tops(peg_1, peg_2, peg_3)[1]
-      peg_2.delete_at(0)
-    elsif disc != nil && peg == 2
-      currently_holding << inspect_tops(peg_1, peg_2, peg_3)[2]
-      peg_3.delete_at(0)
-    end
-  end
-  currently_holding
-  # the above is not DRY and can probably be made into other methods
-end
+# here we go!
+move_disk(4, peg1, peg3, peg2)
+
+puts "ending situation:"
+puts "peg1 = #{peg1}"
+puts "peg2 = #{peg2}"
+puts "peg3 = #{peg3}"
+
+# this is still really confusing, but it follows the instructions
+# wikipedia describes exactly, so i guess it works...
+
+
 
 
