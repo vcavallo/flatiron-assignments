@@ -34,15 +34,10 @@ color = pigeon_data[:color]
 gender = pigeon_data[:gender]
 lives =  pigeon_data[:lives]
 
+attributes = [color,gender,lives]
+all_pigeon_names = ["Theo", "Peter Jr.", "Lucky", "Ms .K", "Queenie", "Andrew", "Alex"]
+
 pigeon_list= {}
-
-# colors.each do |color, pigeons_array|
-#   if pigeons_array.include? ("Theo")
-#     puts "we found Theo in #{color}"
-#   end
-# end
-
-  # more general iterator might be helpful:
 
 def get_attribute_by_pigeon(attribute, pigeon)
   results = attribute.collect do |value, pigeons_array|
@@ -52,8 +47,6 @@ def get_attribute_by_pigeon(attribute, pigeon)
   end
   results.compact
 end
-
-get_attribute_by_pigeon(color, "Theo")
 
 def assign_feature_to_pigeon(list, pigeon, attribute, value)
   if list[pigeon] != nil
@@ -65,19 +58,32 @@ end
 # when this is called, I nest in the get_attribute_by_pigeon() function,
 # which feels sort of repetitive but I can't exactly figure out the fix.
 
-assign_feature_to_pigeon(pigeon_list, "Theo", :color, get_attribute_by_pigeon(color, "Theo"))
-assign_feature_to_pigeon(pigeon_list, "Theo", :gender, get_attribute_by_pigeon(gender, "Theo"))
-assign_feature_to_pigeon(pigeon_list, "Theo", :lives, get_attribute_by_pigeon(lives, "Theo"))
 
+def set_all_colors(all_pigeon_names, pigeon_list, color)
+  all_pigeon_names.each do |name|
+    assign_feature_to_pigeon(pigeon_list, name, :color, get_attribute_by_pigeon(color, name))
+  end
+end
+
+def set_all_genders(all_pigeon_names, pigeon_list, gender)
+  all_pigeon_names.each do |name|
+    assign_feature_to_pigeon(pigeon_list, name, :gender, get_attribute_by_pigeon(gender, name))
+  end
+end
+
+def set_all_lives(all_pigeon_names, pigeon_list, lives)
+  all_pigeon_names.each do |name|
+    assign_feature_to_pigeon(pigeon_list, name, :lives, get_attribute_by_pigeon(lives, name))
+  end
+end
+
+set_all_colors(all_pigeon_names, pigeon_list, color)
+set_all_genders(all_pigeon_names, pigeon_list, gender)
+set_all_lives(all_pigeon_names, pigeon_list, lives)
+
+# I tried to do a set_all_attributes but couldn't get it working in time.
 
 p pigeon_list
-
-# test_list = {"Theo" => {color: "green"}}
-# test_list2 = {"Theo" => {:gender => "Male"}}
-# test_list["Theo"] = test_list["Theo"].merge(test_list2["Theo"]) 
-# assign_feature_to_pigeon(test_list, "Theo", :gender, "Male")
-# p test_list
-
 
 # Iterate over the hash above collecting each pigeon by name and rebuild it into the hash below 
 # that displays the individual attributes of each bird.
