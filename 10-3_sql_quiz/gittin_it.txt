@@ -1,0 +1,31 @@
+Q1. What is the approximate age of the Earth (in years)?
+    a. 4500000000
+    b. 0
+    c. 10000 
+    d. -20
+
+Q2. How many continents are there?
+    a. 1
+    b. 100
+    c. 7
+    d. 12
+
+Q3. What time is it?
+    a. soon
+    b. later
+    c. now
+    d. then
+
+Q4. Who are you?
+    a. Me, silly!
+    b. Nobody.
+    c. You.
+    d. Them.
+
+Q5. How many other questions are on this quiz, aside from this one?
+    a. 1
+    b. 2
+    c. 3
+    d. 4
+    
+

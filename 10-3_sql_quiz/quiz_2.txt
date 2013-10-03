@@ -1,0 +1,29 @@
+Q1. What time is blue?
+    a. blue
+    b. eleven
+    c. elephant
+    d. wtf?
+
+Q2. Why am quiz?
+    a. wtf?
+    b. twelve
+    c. hippo
+    d. twelve hours in a half a day
+
+Q3. Who wrote this quiz?
+    a. kitchen
+    b. a maniac
+    c. abe lincoln
+    d. a different hippo
+
+Q4. How many words are in this sentence?
+    a. 7
+    b. 8
+    c. 0
+    d. -5
+
+Q5. How many other questions are on this quiz, aside from this one?
+    a. 1
+    b. 2
+    c. 3
+    d. 4
