@@ -48,72 +48,46 @@ end
 
 # puts get_safe_posts(all_posts)
 
-def get_post_element(post, )
-  get_safe_posts(every_post).each do |a_post|
-    a_post.each do |attribute, value|
-      if attribute == "data"
-        value.each do |post_data_name, data|
-          upvotes = data if post_data_name == "ups"
-        end
-      end
-    end
+puts all_posts[0]
+puts all_posts[1]
+
+def get_single_safe_post(every_safe_post, post_number)
+  every_safe_post[post_number]
 end
 
-def generate_html(every_post)
-  upvotes = ""
-  get_safe_posts(every_post).each do |a_post|
-    a_post.each do |attribute, value|
-      if attribute == "data"
-        value.each do |post_data_name, data|
-          upvotes = data if post_data_name == "ups"
-        end
-      end
-    end
-  end
+# get_single_safe_post(all_posts, 0)
 
-  downvotes = ""
+def get_post_element(every_post, post, element)
+  result = ""
   get_safe_posts(every_post).each do |a_post|
     a_post.each do |attribute, value|
       if attribute == "data"
         value.each do |post_data_name, data|
-          downvotes = data if post_data_name == "downs"
+          result = data if post_data_name == element
         end
       end
     end
   end
+  result
+end
 
-  permalink = ""
-  get_safe_posts(every_post).each do |a_post|
-    a_post.each do |attribute, value|
-      if attribute == "data"
-        value.each do |post_data_name, data|
-          permalink = data if post_data_name == "permalink"
-        end
-      end
-    end
-  end
+# get_post_element(all_posts, get_single_safe_post(all_posts, 0), "ups")
 
-  title = ""
-  get_safe_posts(every_post).each do |a_post|
-    a_post.each do |attribute, value|
-      if attribute == "data"
-        value.each do |post_data_name, data|
-          title = data if post_data_name == "title"
-        end
-      end
-    end
-  end
+def generate_html(every_post, post_number)
+  upvotes = 
+  get_post_element(every_post, get_single_safe_post(every_post, post_number), "ups")
 
-  thumbnail = ""
-  get_safe_posts(every_post).each do |a_post|
-    a_post.each do |attribute, value|
-      if attribute == "data"
-        value.each do |post_data_name, data|
-          thumbnail = data if post_data_name == "thumbnail"
-        end
-      end
-    end
-  end
+  downvotes = 
+  get_post_element(every_post, get_single_safe_post(every_post, post_number), "downs")
+
+  permalink = 
+  get_post_element(every_post, get_single_safe_post(every_post, post_number), "permalink")
+
+  title = 
+  get_post_element(every_post, get_single_safe_post(every_post, post_number), "title")
+
+  thumbnail = 
+  get_post_element(every_post, get_single_safe_post(every_post, post_number), "thumbnail")
 
   puts "upvotes = #{upvotes}"
   puts "downvotes = #{downvotes}"
@@ -123,7 +97,9 @@ def generate_html(every_post)
 
 end
 
-generate_html(all_posts)
+
+
+# generate_html(all_posts, 0)
 
 
 
