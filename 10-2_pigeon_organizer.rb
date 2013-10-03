@@ -23,13 +23,6 @@ pigeon_data = {
   }
 }
 
-# Plans:
-# create a hash for each pigeon with the appropriate keys
-##  
-# iterate through each attribute hash, taking note of which attr you're on*
-## in each value, check the array for a given pigeon
-# if he's there, add the key name to the pigeon's attr in line with *
-
 color = pigeon_data[:color]
 gender = pigeon_data[:gender]
 lives =  pigeon_data[:lives]
@@ -57,7 +50,6 @@ def assign_feature_to_pigeon(list, pigeon, attribute, value)
 end
 # when this is called, I nest in the get_attribute_by_pigeon() function,
 # which feels sort of repetitive but I can't exactly figure out the fix.
-
 
 def set_all_colors(all_pigeon_names, pigeon_list, color)
   all_pigeon_names.each do |name|
