@@ -1,5 +1,7 @@
+require_relative './song_library.rb'
+
 def jukebox(command)
-  if command.downcase == "list"
+  if command == "list"
     list_library
   else
     parse_command(command)
@@ -25,6 +27,8 @@ def parse_artist(command, lib)
     parsed = false
   else
     lib.each do |artist, hash|
+      puts "hello?"
+      puts "putting artist thing: #{artist.to_s.gsub("_"," ").downcase}"
       if command.downcase == artist.to_s.gsub("_"," ").downcase
         puts list_artist(artist, lib)
         parsed = true
@@ -69,9 +73,9 @@ def not_found(command)
   true
 end
 
-puts "Welcome to Ruby Console Jukebox!"
-puts "Enter a command to continue. Type 'help' for a list of commands."
+# puts "Welcome to Ruby Console Jukebox!"
+# puts "Enter a command to continue. Type 'help' for a list of commands."
 
-command = gets.chomp
+# command = gets.chomp
 
-jukebox(command)
+# jukebox(command)
