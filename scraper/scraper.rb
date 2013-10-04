@@ -22,6 +22,20 @@ all_student_excerpt = all_student_data.collect do |student|
   student.css("div.excerpt").css("p").text
 end
 
+# student_image = all_student_links.first
+
+a_student_page = Nokogiri::HTML(open("http://students.flatironschool.com/students/vivianzhang.html"))
+
+a_student_image = a_student_page.css("img.student_pic").attr("src").text
+a_student_twitter = a_student_page.css("i.icon-twitter").first.parent.attr("href")
+a_student_linkedin = a_student_page.css("i.icon-linkedin-sign").first.parent.attr("href")
+a_student_github = a_student_page.css("i.icon-github").first.parent.attr("href")
+a_student_facebook = a_student_page.css("i.icon-facebook").first.parent.attr("href")
+a_student_quote = a_student_page.css("div.textwidget").text
+a_student_bio = a_student_page.css("div#ok-text-column-2").css("p").first.children.to_s.strip
+
+
+
 # # loop through all student pages
 # all_student_links.each do |url|
 
