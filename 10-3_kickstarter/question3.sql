@@ -2,7 +2,7 @@
 
 SELECT title, SUM(pledges.amount) AS `total_amount_pledged`
   FROM projects 
-  JOIN pledges
+  JOIN pledges p
   ON projects.id = pledges.project_id
   WHERE pledges.amount >= projects.funding_goal
   GROUP BY projects.id
