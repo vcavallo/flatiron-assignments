@@ -34,8 +34,9 @@ a_student_facebook = a_student_page.css("i.icon-facebook").first.parent.attr("hr
 a_student_quote = a_student_page.css("div.textwidget").text
 a_student_bio = a_student_page.css("div#ok-text-column-2").css("p").first.children.to_s.strip
 a_student_education = a_student_page.css("div#ok-text-column-3").css("ul").children.text.strip.split("\n")
-# fix space above
+# fix spaces above
 a_student_work = a_student_page.css("div#ok-text-column-4").css("p").first.children.to_s.strip
+
 
 # # loop through all student pages
 # all_student_links.each do |url|
