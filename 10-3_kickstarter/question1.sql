@@ -1,0 +1,1 @@
+SELECT * FROM projects JOIN pledges ON pledges.project_id = projects.id GROUP BY projects.id
