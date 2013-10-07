@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require 'pry'
+require 'sqlite3'
 
 doc = Nokogiri::HTML(open("http://students.flatironschool.com/"))
 
@@ -36,14 +37,18 @@ a_student_bio = a_student_page.css("div#ok-text-column-2").css("p").first.childr
 a_student_education = a_student_page.css("div#ok-text-column-3").css("ul").children.text.strip.split("\n")
 # fix spaces above
 a_student_work = a_student_page.css("div#ok-text-column-4").css("p").first.children.to_s.strip
+# need to figure out coder cred: 
+#   a_student_page.css("div.coder-cred").children.each do |cred|
+#     puts cred.children.css("a").children  
 
 
 # # loop through all student pages
-# all_student_links.each do |url|
+all_student_links.each do |url|
 
-#   student_page = Nokogiri::HTML(open("http://students.flatironschool.com/#{url}"))
+  student_page = Nokogiri::HTML(open("http://students.flatironschool.com/#{url}"))
 
-# end
+
+end
 
 
 
