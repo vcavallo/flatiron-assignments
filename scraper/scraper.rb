@@ -57,6 +57,10 @@ def populate(full_list, attribute_array)
   end
 end
 
+# Wow, just realized this is real broken.
+# it's just filling with the first student's data over and over.
+# FIX! (and finish) 
+## HAHA About to go to sleep and realized i wasn't incrementing i. do that.
 populate(all_students, all_student_image_links)
 populate(all_students, all_student_taglines)
 populate(all_students, all_student_excerpts)
