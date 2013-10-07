@@ -5,23 +5,63 @@ require 'sqlite3'
 
 doc = Nokogiri::HTML(open("http://students.flatironschool.com/"))
 
+db = SQLite3::Database.new "students.db"
+db.execute "CREATE TABLE IF NOT EXISTS 
+              Students(
+                id INTEGER PRIMARY KEY,
+                link TEXT, 
+                image TEXT, 
+                tagline TEXT,
+                excerpt TEXT
+              )"
+
 all_student_data = doc.css("li.home-blog-post")
 
 all_student_links = all_student_data.collect do |student|
-  student.css("a").attr("href")
+  student.css("a").attr("href").text
 end
 
 all_student_image_links = all_student_data.collect do |student|
-  student.css("img").attr("src")
+  student.css("img").attr("src").text
 end
 
 all_student_taglines = all_student_data.collect do |student|
   student.css("p.home-blog-post-meta").text
 end
 
-all_student_excerpt = all_student_data.collect do |student|
+all_student_excerpts = all_student_data.collect do |student|
   student.css("div.excerpt").css("p").text
 end
+
+
+# # # 
+
+all_students = all_student_links.collect do |a_link|
+  ["http://students.flatironschool.com/#{a_link.to_s}"]
+end
+
+# i = 0
+# all_students.each do |student|
+#   student << all_student_image_links[i]
+# end
+
+# i = 0 
+# all_students.each do |student|
+#   student << all_student_taglines[i]
+# end
+
+def populate(full_list, attribute_array)
+  i = 0
+  full_list.each do |student|
+    student << attribute_array[i]
+  end
+end
+
+populate(all_students, all_student_image_links)
+populate(all_students, all_student_taglines)
+populate(all_students, all_student_excerpts)
+
+
 
 # student_image = all_student_links.first
 
@@ -43,12 +83,12 @@ a_student_work = a_student_page.css("div#ok-text-column-4").css("p").first.child
 
 
 # # loop through all student pages
-all_student_links.each do |url|
+# all_student_links.each do |url|
 
-  student_page = Nokogiri::HTML(open("http://students.flatironschool.com/#{url}"))
+#   student_page = Nokogiri::HTML(open("http://students.flatironschool.com/#{url}"))
 
 
-end
+# end
 
 
 
