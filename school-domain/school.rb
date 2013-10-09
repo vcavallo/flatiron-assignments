@@ -21,9 +21,18 @@ class School
   end
 
   def sort
-    @roster.keys.sort
+    @roster.sort_by {|k,v| [k,v]}
   end
 
 end
 
-binding.pry
+# test=School.new("test_School")
+# test.add_student("burt", 2)
+# test.add_student("zef", 5)
+# test.add_student("abby", 2)
+# test.add_student("art", 5)
+# test.add_student("bem", 3)
+# test.add_student("xop", 3)
+
+
+# binding.pry
