@@ -1,5 +1,3 @@
-require 'pry'
-
 class Jukebox
 
   def initialize(songs)
@@ -10,7 +8,8 @@ class Jukebox
   def play
     puts "make a selection (song name) or type 'list' again:"
     @choice = gets.chomp.downcase
-    puts "--> Now Playing: #{@songs.select {|song| song.downcase.include?(@choice)}}"
+    puts "--> Now Playing: #{@songs
+                    .select {|song| song.downcase.include?(@choice)}}"
     if @choice == "list"
       list
     end
@@ -57,7 +56,7 @@ class Jukebox
       puts "for a list of commands, type 'help'."
       puts "to get out of here, type 'exit'."
       cmd = gets.chomp.downcase
-        do_command(cmd)
+      do_command(cmd)
     end
   end
 
