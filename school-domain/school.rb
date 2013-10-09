@@ -1,4 +1,3 @@
-require 'pry'
 
 class School
   attr_accessor :roster, :school_name
@@ -25,14 +24,3 @@ class School
   end
 
 end
-
-# test=School.new("test_School")
-# test.add_student("burt", 2)
-# test.add_student("zef", 5)
-# test.add_student("abby", 2)
-# test.add_student("art", 5)
-# test.add_student("bem", 3)
-# test.add_student("xop", 3)
-
-
-# binding.pry
